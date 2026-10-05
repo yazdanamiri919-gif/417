@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #12000a, #2b0018, #12000a);
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 30px;
+    line-height: 1.6;
+}
+
+p {
+    font-size: 20px;
+    line-height: 2;
+}
+
+button {
+    font-size: 20px;
+    padding: 13px 28px;
+    margin: 10px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.yes {
+    background: #ff4f9a;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 79, 154, 0.5);
+}
+
+.no {
+    background: white;
+    color: #222;
+}
+
+#stage2, #stage3, #final {
+    display: none;
+}
+
+/* قلب‌های صورتی */
+.heart {
+    position: fixed;
+    bottom: -30px;
+    color: #ff69b4;
+    font-size: 22px;
+    animation: floatHeart 5s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+#final h1 {
+    color: #ff69b4;
+    text-shadow: 0 0 15px #ff69b4;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stage1">
+
+    <h1>منو می‌بخشی؟ 🥺❤️</h1>
+
+    <button class="yes" id="yes1" onclick="next1()">آره ❤️</button>
+    <button class="no" id="no1" onclick="no1()">نه 😢</button>
+
+</div>
+
+
+<div id="stage2">
+
+    <h1>مرسی که بخشیدی 😂❤️</h1>
+
+    <p>
+        ببخشید، به خاطر نبود تجربه یه چیزایی رو گفتم
+        و یه چیزایی رو نگفتم.
+    </p>
+
+    <button class="yes" id="yes2" onclick="next2()">می‌بخشم ❤️</button>
+    <button class="no" id="no2" onclick="no2()">نه 😐</button>
+
+</div>
+
+
+<div id="stage3">
+
+    <h1>من از اشتباهام درس گرفتم، یه فرصت دیگه بهم میدی؟ 🥺❤️</h1>
+
+    <button class="yes" id="yes3" onclick="next3()">آره ❤️</button>
+    <button class="no" id="no3" onclick="no3()">نه 😢</button>
+
+</div>
+
+
+<div id="final">
+
+    <h1>دوستدار و عاشق همیشگیت، یزدان ❤️</h1>
+
+    <button class="yes" onclick="exitSite()">خروج از سایت</button>
+
+</div>
+
+
+<script>
+
+/* ساخت قلب‌های صورتی */
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "♥";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 7000);
+}
+
+setInterval(createHeart, 350);
+
+
+/* مرحله اول */
+
+let no1Size = 20;
+let yes1Size = 20;
+
+function no1() {
+
+    const no = document.getElementById("no1");
+    const yes = document.getElementById("yes1");
+
+    no1Size = Math.max(6, no1Size - 3);
+    yes1Size += 4;
+
+    no.style.fontSize = no1Size + "px";
+    no.style.padding = Math.max(3, no1Size / 2) + "px " + Math.max(6, no1Size) + "px";
+
+    yes.style.fontSize = yes1Size + "px";
+    yes.style.padding = "20px 40px";
+}
+
+function next1() {
+
+    document.getElementById("stage1").style.display = "none";
+    document.getElementById("stage2").style.display = "block";
+}
+
+
+/* مرحله دوم */
+
+let no2Size = 20;
+let yes2Size = 20;
+
+function no2() {
+
+    const no = document.getElementById("no2");
+    const yes = document.getElementById("yes2");
+
+    no2Size = Math.max(6, no2Size - 3);
+    yes2Size += 4;
+
+    no.style.fontSize = no2Size + "px";
+    no.style.padding = Math.max(3, no2Size / 2) + "px " + Math.max(6, no2Size) + "px";
+
+    yes.style.fontSize = yes2Size + "px";
+    yes.style.padding = "20px 40px";
+}
+
+function next2() {
+
+    document.getElementById("stage2").style.display = "none";
+    document.getElementById("stage3").style.display = "block";
+}
+
+
+/* مرحله سوم */
+
+let no3Size = 20;
+let yes3Size = 20;
+
+function no3() {
+
+    const no = document.getElementById("no3");
+    const yes = document.getElementById("yes3");
+
+    no3Size = Math.max(6, no3Size - 3);
+    yes3Size += 4;
+
+    no.style.fontSize = no3Size + "px";
+    no.style.padding = Math.max(3, no3Size / 2) + "px " + Math.max(6, no3Size) + "px";
+
+    yes.style.fontSize = yes3Size + "px";
+    yes.style.padding = "20px 40px";
+}
+
+function next3() {
+
+    document.getElementById("stage3").style.display = "none";
+    document.getElementById("final").style.display = "block";
+}
+
+
+function exitSite() {
+    window.close();
+}
+
+</script>
+
+</body>
+</html>
+</html>
